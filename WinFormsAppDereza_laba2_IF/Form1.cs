@@ -23,9 +23,19 @@ namespace WinFormsAppDereza_laba2_IF
 
         private void button1_Click(object sender, EventArgs e)
         {
-            float a = float.Parse(this.textA.Text);
-            float b = float.Parse(this.textB.Text); 
-            float c = float.Parse(this.textC.Text);
+            float a, b, c;
+
+            try
+            {
+                a = float.Parse(this.textA.Text);
+                b = float.Parse(this.textB.Text);
+                c = float.Parse(this.textC.Text);
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Некорректный ввод", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             Properties.Settings.Default.a = a;
             Properties.Settings.Default.b = b;
